@@ -1,6 +1,8 @@
 [![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=15831594)
 # SESION DE LABORATORIO N° 04: PRUEBAS ESTATICAS DE SEGURIDAD DE APLICACIONES CON SONARQUBE
 
+## Nombre: Josue Chambilla Zuñiga
+
 ## OBJETIVOS
   * Comprender el funcionamiento de las pruebas estaticas de seguridad de còdigo de las aplicaciones que desarrollamos utilizando SonarQube.
 
@@ -26,38 +28,63 @@
 ## DESARROLLO
 ### Parte I: Configuración de la herramienta de Pruebas Estaticas de Seguridad de la Aplicación
 1. Ingrear a la pagina de SonarCloud (https://www.sonarsource.com/products/sonarcloud/), iniciar sesión con su cuenta de Github.
+
+
 2. Ingresar a la opción My Account
    ![image](https://github.com/UPT-FAING-EPIS/lab_calidad_01/assets/10199939/bd49c592-47f5-4767-9f15-c56ad6802818)
    
+  ![alt text](image.png)
 3. Generar un nuevo token con el nombre que desee, luego de generar el token, guarde el resultado en algún archivo o aplicación de notas. Debido a que se utilizará
    ![image](https://github.com/UPT-FAING-EPIS/lab_calidad_01/assets/10199939/75941062-40f0-4689-8c91-6603ced490a3)
   
+![alt text](image-1.png)   
+
 4. En el navegador, ingresar a la url https://sonarcloud.io/projects/create, para generar un nuevo proyecto con el nombre apibank, apunte el nombre del Project Key, que se utilizara mas adelante, luego dar click en el boton next.
    ![image](https://github.com/user-attachments/assets/95819e23-6dcf-4ca4-800d-7bfe0f686bf3)
-   
+
+![alt text](image-2.png)
+
 5. En el navegador, finalizar la creación del proyecto, haciendo click en la opción Previous Version, y luego en el boton Create Project
    ![image](https://github.com/user-attachments/assets/7f8a6d86-f14d-4b49-882e-0d0bb35d5069)
 
+![alt text](image-3.png)
+
+![alt text](image-4.png)
+
+![alt text](image-5.png)
+
+Ahora nos vamos a la seccion de "My Account" para generar el token y clickeamos la opciones de Security.
+
+![alt text](image-13.png)
 
 ### Parte II: Creación de la aplicación
 1. Iniciar la aplicación Powershell o Windows Terminal en modo administrador 
+![alt text](image-6.png)
+
 2. Ejecutar el siguiente comando para crear una nueva solución
 ```
 dotnet new sln -o Bank
 ```
+![alt text](image-7.png)
+
 3. Acceder a la solución creada y ejecutar el siguiente comando para crear una nueva libreria de clases y adicionarla a la solución actual.
 ```
 cd Bank
 dotnet new webapi -o Bank.WebApi
 dotnet sln add ./Bank.WebApi/Bank.WebApi.csproj
 ```
+![alt text](image-8.png)
+
 4. Ejecutar el siguiente comando para crear un nuevo proyecto de pruebas y adicionarla a la solución actual
 ```
 dotnet new mstest -o Bank.WebApi.Tests
 dotnet sln add ./Bank.WebApi.Tests/Bank.WebApi.Tests.csproj
 dotnet add ./Bank.WebApi.Tests/Bank.WebApi.Tests.csproj reference ./Bank.WebApi/Bank.WebApi.csproj
 ```
+![alt text](image-9.png)
+
 5. Iniciar Visual Studio Code (VS Code) abriendo el folder de la solución como proyecto. En el proyecto Bank.Domain, si existe un archivo Class1.cs proceder a eliminarlo. Asimismo en el proyecto Bank.Domain.Tests si existiese un archivo UnitTest1.cs, también proceder a eliminarlo.
+![alt text](image-10.png)
 
 6. En VS Code, en el proyecto Bank.WebApi proceder la carpeta `Models` y dentro de esta el archivo BankAccount.cs e introducir el siguiente código:
 ```C#
@@ -92,6 +119,8 @@ namespace Bank.WebApi.Models
     }
 }
 ```
+![alt text](image-11.png)
+
 7. Luego en el proyecto Bank.WepApi.Tests añadir un nuevo archivo BanckAccountTests.cs e introducir el siguiente código:
 ```C#
 using Bank.WebApi.Models;
@@ -118,6 +147,8 @@ namespace Bank.Domain.Tests
     }
 }
 ```
+![alt text](image-12.png)
+
 8. En el terminal, ejecutar las pruebas de lo nostruiido hasta el momento:
 ```Bash
 dotnet test --collect:"XPlat Code Coverage"
@@ -144,15 +175,27 @@ dotnet sonarscanner begin /k:"PROJECT_KEY" /d:sonar.token="TOKEN" /d:sonar.host.
 > - ORGANIZATION: es el nombre de la organización generada en Sonar Source
 > - PROJECT_KEY: es el nombre de la llave proyecto que previamente se genero en la pagina en Sonar Source
 
+![alt text](image-15.png)
+
 12. En el terminal, ejecutar:
 ```Bash
 dotnet build --no-incremental
 dotnet test --collect:"XPlat Code Coverage;Format=opencover"
 ```
+
+![alt text](image-16.png)
+
+![alt text](image-17.png)
+
+
 13. Ejecutar nuevamente el paso 8 para lo cual se obtendra una respuesta similar a la siguiente:
 ```Bash
 dotnet sonarscanner end /d:sonar.token="TOKEN"
 ```
+
+![alt text](image-18.png)
+
+
 14. En la pagina de Sonar Source verificar el resultado del analisis.
 
 ![image](https://github.com/UPT-FAING-EPIS/lab_calidad_01/assets/10199939/4e4892d3-71e2-4437-9713-a270ebf61b06)
