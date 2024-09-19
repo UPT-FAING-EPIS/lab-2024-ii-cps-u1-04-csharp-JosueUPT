@@ -341,4 +341,4 @@ namespace Bank.Domain.Tests
 dotnet test --collect:"XPlat Code Coverage"
 ```
 
-![alt text](convertura.png)
+![alt text](cobertura.png)
