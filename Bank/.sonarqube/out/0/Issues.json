@@ -54,9 +54,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/ASUS/Desktop/lab-2024-ii-cps-u1-04-csharp-JosueUPT/Bank/Bank.WebApi/Models/BankAccount.cs",
                 "region": {
-                  "startLine": 18,
+                  "startLine": 26,
                   "startColumn": 55,
-                  "endLine": 18,
+                  "endLine": 26,
                   "endColumn": 63
                 }
               }
@@ -75,9 +75,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/ASUS/Desktop/lab-2024-ii-cps-u1-04-csharp-JosueUPT/Bank/Bank.WebApi/Models/BankAccount.cs",
                 "region": {
-                  "startLine": 26,
+                  "startLine": 18,
                   "startColumn": 55,
-                  "endLine": 26,
+                  "endLine": 18,
                   "endColumn": 63
                 }
               }
@@ -106,6 +106,43 @@
           ],
           "properties": {
             "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1512",
+          "level": "note",
+          "message": "Use 'ArgumentOutOfRangeException.ThrowIfNegative' en lugar de iniciar explícitamente una nueva instancia de excepción",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ASUS/Desktop/lab-2024-ii-cps-u1-04-csharp-JosueUPT/Bank/Bank.WebApi/Models/BankAccount.cs",
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 13,
+                  "endLine": 26,
+                  "endColumn": 65
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/ASUS/Desktop/lab-2024-ii-cps-u1-04-csharp-JosueUPT/Bank/Bank.WebApi/Models/BankAccount.cs",
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 17,
+                  "endLine": 25,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "MethodNameProperty": "ThrowIfNegative"
+            }
           }
         },
         {
@@ -153,43 +190,6 @@
             "warningLevel": 1,
             "customProperties": {
               "MethodNameProperty": "ThrowIfGreaterThan"
-            }
-          }
-        },
-        {
-          "ruleId": "CA1512",
-          "level": "note",
-          "message": "Use 'ArgumentOutOfRangeException.ThrowIfNegative' en lugar de iniciar explícitamente una nueva instancia de excepción",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ASUS/Desktop/lab-2024-ii-cps-u1-04-csharp-JosueUPT/Bank/Bank.WebApi/Models/BankAccount.cs",
-                "region": {
-                  "startLine": 25,
-                  "startColumn": 13,
-                  "endLine": 26,
-                  "endColumn": 65
-                }
-              }
-            }
-          ],
-          "relatedLocations": [
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/ASUS/Desktop/lab-2024-ii-cps-u1-04-csharp-JosueUPT/Bank/Bank.WebApi/Models/BankAccount.cs",
-                "region": {
-                  "startLine": 25,
-                  "startColumn": 17,
-                  "endLine": 25,
-                  "endColumn": 23
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "MethodNameProperty": "ThrowIfNegative"
             }
           }
         },

@@ -247,3 +247,98 @@ jobs:
 ## Actividades Encargadas
 1. Adicionar los escenarios, casos de prueba, metodos de prueba y modificaciones para verificar el método de crédito.
 2. Adjuntar la captura donde se evidencia el incremento del valor de cobertura en un archivo cobertura.png.
+
+```C#
+BankAccount.cs
+```
+```C#
+namespace Bank.WebApi.Models
+{
+    public class BankAccount
+    {
+        public string CustomerName { get; private set; } // Cambiado a propiedad pública
+        private double m_balance;
+
+        // Constructor privado para uso interno
+        private BankAccount() { }
+
+        public BankAccount(string customerName, double balance)
+        {
+            CustomerName = customerName; // Asegúrate de inicializarlo aquí
+            m_balance = balance;
+        }
+
+        public double Balance => m_balance;
+
+        public void Debit(double amount)
+        {
+            if (amount > m_balance)
+                throw new ArgumentOutOfRangeException("amount");
+            if (amount < 0)
+                throw new ArgumentOutOfRangeException("amount");
+            m_balance -= amount;
+        }
+
+        public void Credit(double amount)
+        {
+            if (amount < 0)
+                throw new ArgumentOutOfRangeException("amount");
+            m_balance += amount;
+        }
+    }
+}
+```
+
+```C#
+BanckAccountTests.cs
+```
+
+```C#
+using Bank.WebApi.Models;
+using NUnit.Framework;
+using Assert = NUnit.Framework.Assert; // Asegúrate de usar solo NUnit
+
+
+namespace Bank.Domain.Tests
+{
+    public class BankAccountTests
+    {
+        [Test]
+        public void Debit_WithValidAmount_UpdatesBalance()
+        {
+            // Arrange
+            double beginningBalance = 11.99;
+            double debitAmount = 4.55;
+            double expected = 7.44;
+            BankAccount account = new BankAccount("Mr. Bryan Walton", beginningBalance);
+            // Act
+            account.Debit(debitAmount);
+            // Assert
+            double actual = account.Balance;
+            Assert.AreEqual(expected, actual, 0.001, "Account not debited correctly");
+        }
+
+        [Test]
+        public void Credit_WithValidAmount_UpdatesBalance()
+        {
+            // Arrange
+            double beginningBalance = 11.99;
+            double creditAmount = 4.55;
+            double expected = 16.54; // 11.99 + 4.55
+            BankAccount account = new BankAccount("Mr. Bryan Walton", beginningBalance);
+            
+            // Act
+            account.Credit(creditAmount);
+            
+            // Assert
+            double actual = account.Balance;
+            Assert.AreEqual(expected, actual, 0.001, "Account not credited correctly");
+        }
+    }
+}
+```
+```
+dotnet test --collect:"XPlat Code Coverage"
+```
+
+![alt text](convertura.png)

@@ -142,7 +142,7 @@
     <Property Name="sonar.vb.ignoreHeaderComments">true</Property>
     <Property Name="sonar.branch.longLivedBranches.regex">(branch|release)-.*</Property>
     <Property Name="sonar.objc.file.suffixes">.m</Property>
-    <Property Name="sonar.autoscan.enabled">true</Property>
+    <Property Name="sonar.autoscan.enabled">false</Property>
     <Property Name="sonar.text.inclusions">**/*.sh,**/*.bash,**/*.zsh,**/*.ksh,**/*.ps1,**/*.properties,**/*.conf,**/*.pem,**/*.config,.env,.aws/config</Property>
     <Property Name="sonar.ruby.coverage.reportPaths">coverage/.resultset.json</Property>
     <Property Name="sonar.qualityProfiles.allowDisableInheritedRules">true</Property>
